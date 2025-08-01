@@ -1,0 +1,18 @@
+
+Creating a docker container called nginx-aap-bind using the image called nginx (or using the nginx image).
+In the command, we are doig a mount bind by mouut binding the usr/share/nginx/html directory from nginx to the 
+current local directory that we are curretly on.
+Thus we are mounting the /usr/share/nginx/html directory by binding it to the current local directory that we're on.
+
+usage:
+1. mount is a tag --mount
+2. type is the type of mount which is bind : type=bind
+3. source is where on the host machine do you want to bind to the container. 
+Could be a directory like /home/lin/DevCenter/nginx-app-bind - using "$(pwd)" meaning you want to bind the current directory
+4. target is the where you want to bind the host machine dorectory to in the container dorectory 
+
+
+docker container run -d --name nginx-app-bind -p 8080:80 --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html nginx
+
+
+docker container run -d --name myapp-bind -p 8080:80 --mount type=bind,source=/home/lin/DevCenter/myapp-bind--dir,target=/usr/share/nginx/html nginx
